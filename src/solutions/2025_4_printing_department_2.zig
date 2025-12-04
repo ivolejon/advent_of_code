@@ -1,9 +1,10 @@
 const std = @import("std");
 const util = @import("advent_of_code");
 const print = std.debug.print;
-
+var counter: u32 = 10000;
+var total_rolls: u32 = 0;
 pub var bounds: u16 = 135;
-pub var total: u32 = 0;
+
 pub fn solution() !void {
 
     // var x : usize = 0;
@@ -32,40 +33,45 @@ pub fn solution() !void {
         .{ -1, 0 }, // Left
     };
 
-    for (matrix, 0..) |row, r| {
-        for (row, 0..) |c, i| {
-            var number_of_rolls_around: u8 = 0;
-            matrix_updated[r][i] = matrix[r][i];
-            if (c == '.') {
-                continue;
-            }
-            const x = ToI16(r);
-            const y = ToI16(i);
-
-            // Look around;
-            for (positions) |pos| {
-                const look_at = .{ x + pos[0], y + pos[1] };
-
-                // Out of bounds
-                if (!isValidPosition(look_at[0], look_at[1])) {
+    while (counter > 0) {
+        counter = 0;
+        for (matrix, 0..) |row, r| {
+            for (row, 0..) |c, i| {
+                var number_of_rolls_around: u8 = 0;
+                matrix_updated[r][i] = matrix[r][i];
+                if (c == '.') {
                     continue;
                 }
+                const x = ToI16(r);
+                const y = ToI16(i);
 
-                // Found roll
-                if (matrix[ToUsize(look_at[0])][ToUsize(look_at[1])] == '@') {
-                    number_of_rolls_around += 1;
+                // Look around;
+                for (positions) |pos| {
+                    const look_at = .{ x + pos[0], y + pos[1] };
+
+                    // Out of bounds
+                    if (!isValidPosition(look_at[0], look_at[1])) {
+                        continue;
+                    }
+
+                    // Found log
+                    if (matrix[ToUsize(look_at[0])][ToUsize(look_at[1])] == '@') {
+                        number_of_rolls_around += 1;
+                    }
+                }
+                // If number of rolls around is < 4 then bingo
+                if (number_of_rolls_around < 4) {
+                    matrix_updated[ToUsize(x)][ToUsize(y)] = '.';
+                    counter += 1;
                 }
             }
-            // If number of rolls around is < 4 then bingo
-            if (number_of_rolls_around < 4) {
-                matrix_updated[ToUsize(x)][ToUsize(y)] = 'x';
-                total += 1;
-            }
         }
+        matrix = matrix_updated;
+        // printGrid(matrix);
+        total_rolls = total_rolls + counter;
+        print("\nTotal: {d}", .{counter});
     }
-    // printGrid(matrix);
-    // printGrid(matrix_updated);
-    print("\nTotal: {d}", .{total});
+    print("Final total rolls: {d}\n", .{total_rolls});
 }
 
 fn isValidPosition(x: i16, y: i16) bool {

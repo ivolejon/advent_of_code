@@ -15,6 +15,7 @@ const gift_shop = @import("solutions/2025_2_solution1_solution2_gift_shop.zig");
 const lobby_1 = @import("solutions/2025_3_lobby_1.zig");
 const lobby_2 = @import("solutions/2025_3_lobby_2.zig");
 const printing_department_1 = @import("solutions/2025_4_printing_department_1.zig");
+const printing_department_2 = @import("solutions/2025_4_printing_department_2.zig");
 pub fn main() !void {
     // try not_quite_lisp_1.solution(); // 2015 Day 1, Not Quite Lisp - First Star
     // try not_quite_lisp_2.solution(); // 2015 Day 1, Not Quite Lisp - Second Star
@@ -30,5 +31,5 @@ pub fn main() !void {
     // try gift_shop.solution();
     // try lobby_1.solution();
     // try lobby_2.solution();
-    try printing_department_1.solution();
+    try printing_department_2.solution();
 }
