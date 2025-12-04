@@ -5,8 +5,6 @@ const print = std.debug.print;
 pub var bounds: u16 = 135;
 pub var total: u32 = 0;
 pub fn solution() !void {
-
-    // var x : usize = 0;
     var j: usize = 0;
     var matrix: [135][135]u16 = undefined;
     var matrix_updated: [135][135]u16 = undefined;
@@ -39,8 +37,8 @@ pub fn solution() !void {
             if (c == '.') {
                 continue;
             }
-            const x = ToI16(r);
-            const y = ToI16(i);
+            const x = ToU16(r);
+            const y = ToU16(i);
 
             // Look around;
             for (positions) |pos| {
@@ -69,13 +67,13 @@ pub fn solution() !void {
 }
 
 fn isValidPosition(x: i16, y: i16) bool {
-    if (x < 0 or y < 0 or x > ToI16(bounds - 1) or y > ToI16(bounds - 1)) {
+    if (x < 0 or y < 0 or x > ToU16(bounds - 1) or y > ToU16(bounds - 1)) {
         return false;
     }
     return true;
 }
 
-fn ToI16(value: usize) i16 {
+fn ToU16(value: usize) i16 {
     return @as(i16, @intCast(value));
 }
 
