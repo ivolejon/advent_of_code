@@ -10,8 +10,8 @@ const Position = struct {
 const Grid = struct {
     grid: std.AutoHashMap(Position, u32),
 
-    pub fn new() Grid {
-        return Grid{ .grid = std.AutoHashMap(Position, u32).init(std.heap.page_allocator) };
+    pub fn new(a: std.mem.Allocator) Grid {
+        return Grid{ .grid = std.AutoHashMap(Position, u32).init(a) };
     }
     pub fn deliver(self: *Grid, pos: Position) !void {
         const count = self.grid.get(pos) orelse 0;
@@ -24,11 +24,18 @@ const Grid = struct {
     pub fn countHouses(self: *Grid) usize {
         return self.grid.count();
     }
+    pub fn deinit(self: *Grid) void {
+        self.grid.deinit();
+    }
 };
 
 pub fn solution() !void {
-    var grid = Grid.new();
+    var general_purpose_allocator: std.heap.GeneralPurposeAllocator(.{}) = .init;
+    defer _ = general_purpose_allocator.deinit();
+    const gpa = general_purpose_allocator.allocator();
 
+    var grid = Grid.new(gpa);
+    defer grid.deinit();
     var santas_current_pos: Position = .{ .x = 0, .y = 0 };
     var robo_santas_current_pos: Position = .{ .x = 0, .y = 0 };
 
