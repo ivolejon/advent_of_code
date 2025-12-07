@@ -82,6 +82,8 @@ pub fn build(b: *std.Build) void {
             },
         }),
     });
+    const zort = b.dependency("zort", .{});
+    exe.root_module.addImport("zort", zort.module("zort"));
 
     // This declares intent for the executable to be installed into the
     // install prefix when running `zig build` (i.e. when executing the default

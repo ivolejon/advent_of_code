@@ -17,7 +17,6 @@ pub fn solution() !void {
     const data = try util.readFile(std.heap.page_allocator, "src/data/2025_6_trash_compactor.txt");
     var it = std.mem.tokenizeScalar(u8, data, '\n');
     while (it.next()) |line| {
-        print("{s}\n", .{line});
         try lines.append(allocator, line);
     }
     const line_length: usize = lines.items[0].len; // How many chars
@@ -53,7 +52,7 @@ fn calculate(allocator: std.mem.Allocator, column_values: ArrayList(u8), operati
         if (operation == '*') {
             sum = 1;
         }
-        print("Column done, calculating sum\n", .{});
+
         for (current_col_sum.items) |number| {
             if (operation == '*') {
                 sum = sum * number;
@@ -61,7 +60,6 @@ fn calculate(allocator: std.mem.Allocator, column_values: ArrayList(u8), operati
                 sum = sum + number;
             }
         }
-        print("Column sum: {d}\n", .{sum});
         final_sum = final_sum + sum;
         current_col_sum = .empty;
         return;
