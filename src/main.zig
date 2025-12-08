@@ -20,6 +20,8 @@ const cafeteria_1 = @import("solutions/2025_5_cafeteria_1.zig");
 const cafeteria_2 = @import("solutions/2025_5_cafeteria_2.zig");
 const trash_compactor_1 = @import("solutions/2025_6_trash_compactor_1.zig");
 const trash_compactor_2 = @import("solutions/2025_6_trash_compactor_2.zig");
+const laboratories_1 = @import("solutions/2025_7_laboratories_1.zig");
+const laboratories_2 = @import("solutions/2025_7_laboratories_2.zig");
 
 pub fn main() !void {
     // try not_quite_lisp_1.solution(); // 2015 Day 1, Not Quite Lisp - First Star
@@ -39,5 +41,7 @@ pub fn main() !void {
     // try printing_department_2.solution();
     // try cafeteria_2.solution();
     // try trash_compactor_1.solution();
-    try trash_compactor_2.solution();
+    // try trash_compactor_2.solution();
+    // try laboratories_1.solution();
+    try laboratories_2.solution();
 }
