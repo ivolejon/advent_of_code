@@ -36,6 +36,14 @@
             .url = "git+https://github.com/alichraghi/zort.git#04657818aa4bbeb287b46ab7510f1d35c07b26a8",
             .hash = "zort-0.0.0-j84tIi8IAQC55ubSQ5LWCvSJ0wrrgk5hYjKn1_c3MDSz",
         },
+        .qpEngine = .{
+            .url = "https://github.com/qpEngine/qpEngine/archive/refs/tags/v0.0.7.tar.gz",
+            .hash = "qpEngine-0.0.1-zJeisxWlAQAtqi7KtH-0ZbP1jSJPXERcaR7hmTrz8EXV",
+        },
+        .orcz = .{
+            .url = "https://github.com/qaptoR-zig/ORCz/archive/refs/tags/v0.0.2.tar.gz",
+            .hash = "orcz-0.0.1-qHRFOac4AAAYTkdtsuzVwKLydHj2K4EyLNyP0UQyqePu",
+        },
     },
     .paths = .{
         "build.zig",

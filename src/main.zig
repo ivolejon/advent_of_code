@@ -22,6 +22,10 @@ const trash_compactor_1 = @import("solutions/2025_6_trash_compactor_1.zig");
 const trash_compactor_2 = @import("solutions/2025_6_trash_compactor_2.zig");
 const laboratories_1 = @import("solutions/2025_7_laboratories_1.zig");
 const laboratories_2 = @import("solutions/2025_7_laboratories_2.zig");
+const playground_1 = @import("solutions/2025_8_playground_1.zig");
+const playground_2 = @import("solutions/2025_8_playground_2.zig");
+const movie_theater_1 = @import("solutions/2025_9_movie_theater_1.zig");
+const movie_theater_2 = @import("solutions/2025_9_movie_theater_2.zig");
 
 pub fn main() !void {
     // try not_quite_lisp_1.solution(); // 2015 Day 1, Not Quite Lisp - First Star
@@ -43,5 +47,9 @@ pub fn main() !void {
     // try trash_compactor_1.solution();
     // try trash_compactor_2.solution();
     // try laboratories_1.solution();
-    try laboratories_2.solution();
+    // try laboratories_2.solution();
+    // try playground_1.solution();
+    // try playground_1.solution();
+    // try movie_theater_1.solution();
+    try movie_theater_2.solution();
 }

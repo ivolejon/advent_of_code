@@ -84,6 +84,17 @@ pub fn build(b: *std.Build) void {
     });
     const zort = b.dependency("zort", .{});
     exe.root_module.addImport("zort", zort.module("zort"));
+    const qp_engine = b.dependency("qpEngine", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe.root_module.addImport("qpEngine", qp_engine.module("qpEngine"));
+
+    const orcz = b.dependency("orcz", .{
+        .target = target,
+        .optimize = optimize,
+    });
+    exe.root_module.addImport("orcz", orcz.module("orcz"));
 
     // This declares intent for the executable to be installed into the
     // install prefix when running `zig build` (i.e. when executing the default
